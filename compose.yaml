@@ -1,0 +1,32 @@
+version: '3'
+services:
+  web-dev:
+    build: ./app
+    image: sdpx/api
+    ports:
+      - 8081:5000
+    restart: always
+    environment:
+      - DATABASE_NAME=db-dev
+      - DATABASE_PORT=3306
+      - DATABASE_HOST=mydb-dev
+    
+  mydb-dev:
+    image: sdpx/db
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=db-dev
+    volumes:
+      - D:\Documents\01_Study_Files\SDPX\Docker_assignment\mysqldata:/var/lib/mysql
+  # myadmin-dev:
+  #   image: phpmyadmin
+  #   ports:
+  #     - 9087:80
+  #   environment:
+  #     - PMA_HOST=mydb-dev
+  #   depends_on:
+  #     - mydb-dev
+
+networks:
+  database:
+
