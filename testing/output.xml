@@ -1,99 +1,306 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2 (Python 3.11.5 on win32)" generated="2025-01-31T21:40:09.634053" rpa="false" schemaversion="5">
-<suite id="s1" name="Test" source="D:\Documents\01_Study_Files\SDPX\Docker_assignment\testing\test.robot">
-<test id="s1-t1" name="Open Browser To Home Page" line="14">
-<kw name="Open Browser" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:09.856454" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:5000/'.</msg>
-<arg>${HOME URL}</arg>
-<arg>${BROWSER}</arg>
-<doc>Opens a new browser instance to the optional ``url``.</doc>
-<status status="PASS" start="2025-01-31T21:40:09.856454" elapsed="1.732433"/>
-</kw>
-<kw name="Maximize Browser Window" owner="SeleniumLibrary">
-<doc>Maximizes current browser window.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.589885" elapsed="0.041782"/>
-</kw>
-<kw name="Set Selenium Speed" owner="SeleniumLibrary">
-<arg>${DELAY}</arg>
-<doc>Sets the delay that is waited after each Selenium command.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.631667" elapsed="0.001003"/>
-</kw>
-<status status="PASS" start="2025-01-31T21:40:09.854949" elapsed="1.777721"/>
-</test>
-<test id="s1-t2" name="Home Page Should Be Open" line="19">
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.641006" level="INFO">Page title is 'Calculator'.</msg>
-<arg>Calculator</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.633670" elapsed="0.007867"/>
-</kw>
-<status status="PASS" start="2025-01-31T21:40:11.633670" elapsed="0.008402"/>
-</test>
-<test id="s1-t3" name="Test one plus one" line="22">
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.644438" level="INFO">Clicking button '//button[13]'.</msg>
-<arg>//button[13]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.643682" elapsed="0.088715"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.733520" level="INFO">Clicking button '//button[8]'.</msg>
-<arg>//button[8]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.733520" elapsed="0.073626"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.808156" level="INFO">Clicking button '//button[13]'.</msg>
-<arg>//button[13]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.807146" elapsed="0.069777"/>
-</kw>
-<kw name="Click Button" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.877806" level="INFO">Clicking button '//button[12]'.</msg>
-<arg>//button[12]</arg>
-<doc>Clicks the button identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.877806" elapsed="0.072081"/>
-</kw>
-<kw name="Get Text" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.968984" level="INFO">${text} = 2</msg>
-<var>${text}</var>
-<arg>id=answer</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.950904" elapsed="0.018080"/>
+<robot generator="Robot 7.2 (Python 3.11.5 on win32)" generated="2025-01-31T21:43:47.936083" rpa="false" schemaversion="5">
+<suite id="s1" name="Test-Calculate" source="D:\Documents\01_Study_Files\SDPX\Docker_assignment\testing\test-calculate.robot">
+<test id="s1-t1" name="Test Calculate Numbers 4 and 2 (ฺBefore Using Keywords)" line="19">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-31T21:43:48.372235" level="INFO">GET Request : url=http://127.0.0.1:5000/calculate/4/2 
+ path_url=/calculate/4/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-31T21:43:48.372235" level="INFO">GET Response : url=http://127.0.0.1:5000/calculate/4/2 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.3 Python/3.11.5', 'Date': 'Fri, 31 Jan 2025 14:43:48 GMT', 'Content-Type': 'application/json', 'Content-Length': '47', 'Connection': 'close'} 
+ body={"divide":2.0,"minus":2,"multiply":8,"plus":6}
+ 
+ </msg>
+<msg time="2025-01-31T21:43:48.372235" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:5000/calculate/4/2</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.366047" elapsed="0.006188"/>
 </kw>
 <kw name="Should Be Equal" owner="BuiltIn">
-<arg>${text}</arg>
-<arg>2</arg>
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
 <doc>Fails if the given objects are unequal.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.968984" elapsed="0.001006"/>
+<status status="PASS" start="2025-01-31T21:43:48.373241" elapsed="0.001001"/>
 </kw>
-<status status="PASS" start="2025-01-31T21:40:11.642610" elapsed="0.327380"/>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-31T21:43:48.374242" level="INFO">${json_resp} = {'divide': 2.0, 'minus': 2, 'multiply': 8, 'plus': 6}</msg>
+<var>${json_resp}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.374242" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['plus']}</arg>
+<arg>${6}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.375248" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['minus']}</arg>
+<arg>${2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.375248" elapsed="0.001104"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['multiply']}</arg>
+<arg>${8}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.376352" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2025-01-31T21:43:48.377835" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'int'&gt;</msg>
+<arg>${json_resp['divide']}</arg>
+<arg>${2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.376352" elapsed="0.001483"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:43:48.363994" elapsed="0.013841"/>
 </test>
-<test id="s1-t4" name="Go To congrats Page" line="30">
-<kw name="Go To" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:11.969990" level="INFO">Opening url 'http://localhost:5000/congrats'</msg>
-<arg>${CONGRATS URL}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<status status="PASS" start="2025-01-31T21:40:11.969990" elapsed="0.051626"/>
+<test id="s1-t2" name="Test Calculate Numbers 8.4 and 4 (ฺBefore Using Keywords)" line="42">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-31T21:43:48.383592" level="INFO">GET Request : url=http://127.0.0.1:5000/calculate/8.4/4 
+ path_url=/calculate/8.4/4 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-31T21:43:48.383592" level="INFO">GET Response : url=http://127.0.0.1:5000/calculate/8.4/4 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.3 Python/3.11.5', 'Date': 'Fri, 31 Jan 2025 14:43:48 GMT', 'Content-Type': 'application/json', 'Content-Length': '55', 'Connection': 'close'} 
+ body={"divide":2.1,"minus":4.4,"multiply":33.6,"plus":12.4}
+ 
+ </msg>
+<msg time="2025-01-31T21:43:48.383592" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:5000/calculate/8.4/4</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.378848" elapsed="0.004744"/>
 </kw>
-<kw name="Title Should Be" owner="SeleniumLibrary">
-<msg time="2025-01-31T21:40:12.026648" level="INFO">Page title is 'Congratulations! 🎉'.</msg>
-<arg>Congratulations! 🎉</arg>
-<doc>Verifies that the current page title equals ``title``.</doc>
-<status status="PASS" start="2025-01-31T21:40:12.021616" elapsed="0.005032"/>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.385005" elapsed="0.000000"/>
 </kw>
-<status status="PASS" start="2025-01-31T21:40:11.969990" elapsed="0.056658"/>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-01-31T21:43:48.386015" level="INFO">${json_resp} = {'divide': 2.1, 'minus': 4.4, 'multiply': 33.6, 'plus': 12.4}</msg>
+<var>${json_resp}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.386015" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['plus']}</arg>
+<arg>${12.4}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.387014" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['minus']}</arg>
+<arg>${4.4}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.388015" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['multiply']}</arg>
+<arg>${33.6}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.388015" elapsed="0.001001"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['divide']}</arg>
+<arg>${2.1}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.389016" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:43:48.377835" elapsed="0.012690"/>
 </test>
-<status status="PASS" start="2025-01-31T21:40:09.635569" elapsed="2.393088"/>
+<test id="s1-t3" name="Test Calculate Numbers 4 and 2" line="65">
+<kw name="Get Calculation JSON">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-31T21:43:48.400313" level="INFO">GET Request : url=http://127.0.0.1:5000/calculate/4/2 
+ path_url=/calculate/4/2 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-31T21:43:48.400313" level="INFO">GET Response : url=http://127.0.0.1:5000/calculate/4/2 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.3 Python/3.11.5', 'Date': 'Fri, 31 Jan 2025 14:43:48 GMT', 'Content-Type': 'application/json', 'Content-Length': '47', 'Connection': 'close'} 
+ body={"divide":2.0,"minus":2,"multiply":8,"plus":6}
+ 
+ </msg>
+<msg time="2025-01-31T21:43:48.400313" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:5000/calculate/${num1}/${num2}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.393097" elapsed="0.008229"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.401836" elapsed="0.001011"/>
+</kw>
+<return>
+<value>${resp.json()}</value>
+<status status="PASS" start="2025-01-31T21:43:48.402847" elapsed="0.000000"/>
+</return>
+<msg time="2025-01-31T21:43:48.402847" level="INFO">${json_resp} = {'divide': 2.0, 'minus': 2, 'multiply': 8, 'plus': 6}</msg>
+<var>${json_resp}</var>
+<arg>${4}</arg>
+<arg>${2}</arg>
+<status status="PASS" start="2025-01-31T21:43:48.392155" elapsed="0.011694"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['plus']}</arg>
+<arg>${6}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.403849" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['minus']}</arg>
+<arg>${2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.404851" elapsed="0.000996"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['multiply']}</arg>
+<arg>${8}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.405847" elapsed="0.000000"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<msg time="2025-01-31T21:43:48.407214" level="INFO">Argument types are:
+&lt;class 'float'&gt;
+&lt;class 'int'&gt;</msg>
+<arg>${json_resp['divide']}</arg>
+<arg>${2}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.407214" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:43:48.391061" elapsed="0.017147"/>
+</test>
+<test id="s1-t4" name="Test Calculate Numbers 8.4 and 4" line="82">
+<kw name="Get Calculation JSON">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-31T21:43:48.415557" level="INFO">GET Request : url=http://127.0.0.1:5000/calculate/8.4/4 
+ path_url=/calculate/8.4/4 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-31T21:43:48.415557" level="INFO">GET Response : url=http://127.0.0.1:5000/calculate/8.4/4 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.3 Python/3.11.5', 'Date': 'Fri, 31 Jan 2025 14:43:48 GMT', 'Content-Type': 'application/json', 'Content-Length': '55', 'Connection': 'close'} 
+ body={"divide":2.1,"minus":4.4,"multiply":33.6,"plus":12.4}
+ 
+ </msg>
+<msg time="2025-01-31T21:43:48.417015" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:5000/calculate/${num1}/${num2}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.409212" elapsed="0.007803"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.417015" elapsed="0.001011"/>
+</kw>
+<return>
+<value>${resp.json()}</value>
+<status status="PASS" start="2025-01-31T21:43:48.418026" elapsed="0.000000"/>
+</return>
+<msg time="2025-01-31T21:43:48.418026" level="INFO">${json_resp} = {'divide': 2.1, 'minus': 4.4, 'multiply': 33.6, 'plus': 12.4}</msg>
+<var>${json_resp}</var>
+<arg>${8.4}</arg>
+<arg>${4}</arg>
+<status status="PASS" start="2025-01-31T21:43:48.409212" elapsed="0.008814"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['plus']}</arg>
+<arg>${12.4}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.418026" elapsed="0.000998"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['minus']}</arg>
+<arg>${4.4}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.419024" elapsed="0.001003"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['multiply']}</arg>
+<arg>${33.6}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.420027" elapsed="0.001009"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['divide']}</arg>
+<arg>${2.1}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.421036" elapsed="0.000996"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:43:48.408208" elapsed="0.014332"/>
+</test>
+<test id="s1-t5" name="Test Input String" line="98">
+<kw name="Get Calculation JSON">
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-01-31T21:43:48.428105" level="INFO">GET Request : url=http://127.0.0.1:5000/calculate/eight/4 
+ path_url=/calculate/eight/4 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2025-01-31T21:43:48.428105" level="INFO">GET Response : url=http://127.0.0.1:5000/calculate/eight/4 
+ status=200, reason=OK 
+ headers={'Server': 'Werkzeug/3.1.3 Python/3.11.5', 'Date': 'Fri, 31 Jan 2025 14:43:48 GMT', 'Content-Type': 'application/json', 'Content-Length': '39', 'Connection': 'close'} 
+ body={"error_msg":"inputs must be numbers"}
+ 
+ </msg>
+<msg time="2025-01-31T21:43:48.428105" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>http://127.0.0.1:5000/calculate/${num1}/${num2}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.423554" elapsed="0.004551"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.status_code}</arg>
+<arg>${200}</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.428105" elapsed="0.001034"/>
+</kw>
+<return>
+<value>${resp.json()}</value>
+<status status="PASS" start="2025-01-31T21:43:48.429139" elapsed="0.000000"/>
+</return>
+<msg time="2025-01-31T21:43:48.429139" level="INFO">${json_resp} = {'error_msg': 'inputs must be numbers'}</msg>
+<var>${json_resp}</var>
+<arg>eight</arg>
+<arg>4</arg>
+<status status="PASS" start="2025-01-31T21:43:48.423554" elapsed="0.005585"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${json_resp['error_msg']}</arg>
+<arg>inputs must be numbers</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:43:48.429139" elapsed="0.001126"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:43:48.422540" elapsed="0.007725"/>
+</test>
+<status status="PASS" start="2025-01-31T21:43:47.940588" elapsed="0.490773"/>
 </suite>
 <statistics>
 <total>
-<stat pass="4" fail="0" skip="0">All Tests</stat>
+<stat pass="5" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Test" id="s1" pass="4" fail="0" skip="0">Test</stat>
+<stat name="Test-Calculate" id="s1" pass="5" fail="0" skip="0">Test-Calculate</stat>
 </suite>
 </statistics>
 <errors>
