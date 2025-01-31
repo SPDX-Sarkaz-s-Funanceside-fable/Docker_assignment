@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2 (Python 3.11.5 on win32)" generated="2025-01-31T21:40:09.634053" rpa="false" schemaversion="5">
+<suite id="s1" name="Test" source="D:\Documents\01_Study_Files\SDPX\Docker_assignment\testing\test.robot">
+<test id="s1-t1" name="Open Browser To Home Page" line="14">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:09.856454" level="INFO">Opening browser 'Chrome' to base url 'http://localhost:5000/'.</msg>
+<arg>${HOME URL}</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-01-31T21:40:09.856454" elapsed="1.732433"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.589885" elapsed="0.041782"/>
+</kw>
+<kw name="Set Selenium Speed" owner="SeleniumLibrary">
+<arg>${DELAY}</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.631667" elapsed="0.001003"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:40:09.854949" elapsed="1.777721"/>
+</test>
+<test id="s1-t2" name="Home Page Should Be Open" line="19">
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.641006" level="INFO">Page title is 'Calculator'.</msg>
+<arg>Calculator</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.633670" elapsed="0.007867"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:40:11.633670" elapsed="0.008402"/>
+</test>
+<test id="s1-t3" name="Test one plus one" line="22">
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.644438" level="INFO">Clicking button '//button[13]'.</msg>
+<arg>//button[13]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.643682" elapsed="0.088715"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.733520" level="INFO">Clicking button '//button[8]'.</msg>
+<arg>//button[8]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.733520" elapsed="0.073626"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.808156" level="INFO">Clicking button '//button[13]'.</msg>
+<arg>//button[13]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.807146" elapsed="0.069777"/>
+</kw>
+<kw name="Click Button" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.877806" level="INFO">Clicking button '//button[12]'.</msg>
+<arg>//button[12]</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.877806" elapsed="0.072081"/>
+</kw>
+<kw name="Get Text" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.968984" level="INFO">${text} = 2</msg>
+<var>${text}</var>
+<arg>id=answer</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.950904" elapsed="0.018080"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${text}</arg>
+<arg>2</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.968984" elapsed="0.001006"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:40:11.642610" elapsed="0.327380"/>
+</test>
+<test id="s1-t4" name="Go To congrats Page" line="30">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:11.969990" level="INFO">Opening url 'http://localhost:5000/congrats'</msg>
+<arg>${CONGRATS URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-01-31T21:40:11.969990" elapsed="0.051626"/>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<msg time="2025-01-31T21:40:12.026648" level="INFO">Page title is 'Congratulations! 🎉'.</msg>
+<arg>Congratulations! 🎉</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="PASS" start="2025-01-31T21:40:12.021616" elapsed="0.005032"/>
+</kw>
+<status status="PASS" start="2025-01-31T21:40:11.969990" elapsed="0.056658"/>
+</test>
+<status status="PASS" start="2025-01-31T21:40:09.635569" elapsed="2.393088"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test" id="s1" pass="4" fail="0" skip="0">Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

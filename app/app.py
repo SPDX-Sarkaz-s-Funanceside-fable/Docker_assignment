@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 from os import environ
 import database
 
@@ -40,8 +40,11 @@ def delete():
 
 @app.route("/")
 def home():
-    return "<a href='/add'>add data</a><br><a href='/update'>update data</a><br><a href='/delete'>delete data</a>"
+    return render_template('index.html')
 
+@app.route("/congrats")
+def showCongrats():
+    return render_template('congrats.html')
 @app.route('/hello/<name>', methods=['GET'])
 def hello(name):
     return "Hello, " + str(name)

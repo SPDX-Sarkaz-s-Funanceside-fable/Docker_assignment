@@ -1,0 +1,19 @@
+version: '3'
+services:    
+  mydb-dev:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=12345678
+      - MYSQL_DATABASE=db-dev
+    ports:
+      - 3306:3306
+    volumes:
+      - D:\Documents\01_Study_Files\SDPX\Docker_assignment\mysqldata:/var/lib/mysql
+  # myadmin-dev:
+  #   image: phpmyadmin
+  #   ports:
+  #     - 9087:80
+  #   environment:
+  #     - PMA_HOST=mydb-dev
+  #   depends_on:
+  #     - mydb-dev

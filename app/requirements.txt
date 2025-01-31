@@ -1,3 +1,10 @@
 Flask
 mysql-connector-python
 python-dotenv
+
+# Requirements needed for testing
+invoke >= 0.20
+rellu >= 0.6
+docutils >= 0.14
+robotframework >= 3.1.1
+robotframework-seleniumlibrary >= 3.3.1
